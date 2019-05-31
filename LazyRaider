@@ -1,0 +1,238 @@
+#include <Array.au3>
+
+#cs ----------------------------------------------------------------------------
+           Lazy Raider Rotation Bot
+ AutoIt Version: 3.3.6.1
+ Author: Pyre / Wuvluv of Arthas-US
+ Email: Burner03 (AT) Gmail.com
+ 
+ I released this in a incomplete form, the code is by no means perfect and the setup is bad at best but if
+ you understand how to set it up the bot works flawlessly. I do not claim to be a pro coder and the code could most likely be
+ fixed up, this said anyone who wants to update this, fix it up or whatever can do so but please credit me somewhere and email me / message me on MMOWNED.
+ 
+ 
+ 
+ Use Windowed - Fullscreen with this. 
+ To be used with any rotation addon, the one I used and the best one I've found is a modified "Rotation Builder" by "soulwhip".
+ 
+ 
+#ce ----------------------------------------------------------------------------
+
+$GetPixel = ""
+$Pixel = ""
+$X = ""
+$Y = ""
+$i = "2"
+$1 = ""
+$2 = ""
+$3 = ""
+$4 = ""
+$5 = ""
+$6 = ""
+$7 = ""
+$8 = ""
+$9 = ""
+$10 = ""
+$11 = ""
+$12 = ""
+$13 = ""
+$14 = ""
+$15 = ""
+$16 = ""
+$Keybind = ""
+$Key1 = ""
+$Key2 = ""
+$Key3 = ""
+$Key4 = ""
+$Key5 = ""
+$Key6 = ""
+$Key7 = ""
+$Key8 = ""
+$Key9 = ""
+$Key10 = ""
+$Key11 = ""
+$Key12 = ""
+$Key13 = ""
+$Key14 = ""
+$Key15 = ""
+$Key16 = ""
+
+
+$add = "0"
+$Skill = "0"
+HotKeySet ( "{F10}" , "Finished" )
+HotKeySet ( "{F11}" , "Off" )
+
+
+
+
+
+
+
+
+If FileExists ( "config.ini" ) then 
+call("Loaded") 
+else
+call("ConfigMouse") 
+endif
+
+
+func Finished()
+	$i = "2"
+	call("Loaded")
+	endfunc
+
+
+while $i = "2"
+	sleep(1000)
+	ToolTip(' Paused! ',0,0)
+	wend
+
+
+
+while $i = "1"
+	sleep(1000)
+	call("Start")
+	wend
+
+
+
+
+Func ConfigMouse()
+	$Keybind = Inputbox("What do you want the keybind to be?" , "+ = Shift, ^ = CTRL, ! = ALT, {F#} = function keys. F1-F9 ")
+	IniWrite ( "config.ini", "Config", "Keybind", '"' & $Keybind & '"' )
+	$Keybind= IniRead ( "config.ini", "Config", "Keybind", "" )
+	Msgbox(1,"Lazy Raider by Pyre / Wuvluv. Burner03@GMAIL.com","Mouse Over Your Rotation Addon's Icon Picture and Press " & $Keybind)
+	HotKeySet (  $Keybind , "GetPixel" )	
+	endfunc
+
+
+
+Func GetPixel()
+	$Mouseposition = MouseGetPos()
+	$X = $Mouseposition[0]
+	IniWrite ( "config.ini", "Config", "X", $X )
+	$Y = $Mouseposition[1]
+	IniWrite ( "config.ini", "Config", "Y", $Y )
+	Msgbox(1,"Location","Mouse position set.")
+	$i = "2"
+	call("Skills")
+EndFunc
+
+
+
+
+
+Func Skills()
+	Msgbox(1, "Lazy Raider by Pyre / Wuvluv. Burner03@GMAIL.com", "Press " & $Keybind &" to set a skill. Press F10 to finish.")
+	HotKeySet (  $Keybind , "GetSkill" )	
+	$i = "2"
+endfunc
+
+
+
+Func GetSkill()
+$Add = $Add + 1
+$Skill = PixelGetColor ($X , $Y)
+IniWrite ( "config.ini", "Config", $add, $Skill )
+$Key = InputBox("Lazy Raider by Pyre / Wuvluv. Burner03@GMAIL.com", "What skill did you use? Enter the keybind for the skill you used. Press F10 when you are finished.", "", "")
+IniWrite ( "config.ini", "Config", "Key" & $Add,'"' & $Key & '"' )
+endfunc
+
+
+
+Func Loaded()
+	$Keybind= IniRead ( "config.ini", "Config", "Keybind", "" )
+	$X= IniRead ( "config.ini", "Config", "X", "" )
+	$Y= IniRead ( "config.ini", "Config", "Y", "" )
+	$Key1 = IniRead ( "config.ini", "Config", "Key1", "" )
+	Sleep (100)
+	$Key2 = IniRead ( "config.ini", "Config", "Key2", "" )
+	$Key3 = IniRead ( "config.ini", "Config", "Key3", "" )
+	$Key4 = IniRead ( "config.ini", "Config", "Key4", "" )
+	Sleep (100)
+	$Key5 = IniRead ( "config.ini", "Config", "Key5", "" )
+	$Key6 = IniRead ( "config.ini", "Config", "Key6", "" )
+	$Key7 = IniRead ( "config.ini", "Config", "Key7", "" )
+	Sleep (100)
+	$Key8 = IniRead ( "config.ini", "Config", "Key8", "" )
+	$Key9 = IniRead ( "config.ini", "Config", "Key9", "" )
+	Sleep (100)
+	$Key10 = IniRead ( "config.ini", "Config", "Key10", "" )
+	$Key11 = IniRead ( "config.ini", "Config", "Key11", "" )
+	Sleep (100)
+	$Key12 = IniRead ( "config.ini", "Config", "Key12", "" )
+	$Key13 = IniRead ( "config.ini", "Config", "Key13", "" )
+	$Key14 = IniRead ( "config.ini", "Config", "Key14", "" )
+	Sleep (100)
+	$Key15 = IniRead ( "config.ini", "Config", "Key15", "" )
+	$Key16 = IniRead ( "config.ini", "Config", "Key16", "" )
+	
+	$1 = IniRead ( "config.ini", "Config", "1", "" )
+	$2 = IniRead ( "config.ini", "Config", "2", "" )
+	Sleep (100)
+	$3 = IniRead ( "config.ini", "Config", "3", "" )
+	$4 = IniRead ( "config.ini", "Config", "4", "" )
+	$5 = IniRead ( "config.ini", "Config", "5", "" )
+	Sleep (100)
+	$6 = IniRead ( "config.ini", "Config", "6", "" )
+	$7 = IniRead ( "config.ini", "Config", "7", "" )
+	$8 = IniRead ( "config.ini", "Config", "8", "" )
+	Sleep (100)
+	$9 = IniRead ( "config.ini", "Config", "9", "" )
+	$10 = IniRead ( "config.ini", "Config", "10", "" )
+	$11 = IniRead ( "config.ini", "Config", "11", "" )
+	Sleep (100)
+	$12 = IniRead ( "config.ini", "Config", "12", "" )
+	$13 = IniRead ( "config.ini", "Config", "13", "" )
+	$14 = IniRead ( "config.ini", "Config", "14", "" )
+	Sleep (100)
+	$15 = IniRead ( "config.ini", "Config", "15", "" )
+	$16 = IniRead ( "config.ini", "Config", "16", "" )
+	Msgbox(1,"Config.ini loaded.", "Previous settings enabled to rewrite these delete config.ini and restart the bot. Press " & $Keybind & " to toggle the bot on and off. Bot by Pyre / Wuvluv of Arthas-US - Burner03@GMAIL.com")
+	HotKeySet ( $Keybind  , "Toggleon" )	
+	Call("toggleoff")
+	endfunc
+
+Func Start()
+	$i = "3"
+while $i = "3"
+$Check = PixelGetColor ($X , $Y)
+if $Check = $1 then send($Key1)
+if $Check = $2 then send($Key2)
+if $Check = $3 then send($Key3)
+   Sleep (100)
+if $Check = $4 then send($Key4) 
+if $Check = $5 then send($Key5)
+if $Check = $6 then send($Key6)
+if $Check = $7 then send($Key7)
+if $Check = $8 then send($Key8)
+   Sleep (100)
+if $Check = $9 then send($Key9)
+if $Check = $10 then send($Key10)
+if $Check = $11 then send($Key11)
+if $Check = $12 then send($Key12)
+if $Check = $13 then send($Key13)
+   Sleep (100)
+if $Check = $14 then send($Key14)
+if $Check = $15 then send($Key15)
+if $Check = $16 then send($Key16)
+   ToolTip("")
+	Sleep(250)
+wend
+endfunc
+
+Func Off()
+	Exit
+EndFunc
+
+func toggleon()
+	$i = "3"
+HotKeySet ( $Keybind, "Toggleoff" )	
+call("Start")
+endfunc
+func toggleoff()
+	$i = "2"
+HotKeySet (  $Keybind , "Toggleon" )
+
+endfunc
