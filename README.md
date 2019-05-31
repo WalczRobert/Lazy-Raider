@@ -1,5 +1,7 @@
 # Lazy-Raider
+I am reposting the original Lazy Raider.
 
+-------------------------------------------------------------
 Lazy Raider Rotation Pixle Bot
  AutoIt Version: 3.3.6.1
  Author: Pyre / Wuvluv of Arthas-US
