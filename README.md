@@ -1,5 +1,5 @@
-# Lazy-Raider
-I am reposting the original Lazy Raider.
+### Lazy-Raider
+## I am reposting the original Lazy Raider.
 
 -------------------------------------------------------------
 Lazy Raider Rotation Pixle Bot
